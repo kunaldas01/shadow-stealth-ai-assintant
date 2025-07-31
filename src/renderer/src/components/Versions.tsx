@@ -1,15 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 function Versions(): React.JSX.Element {
-  const [versions] = useState(window.electron.process.versions)
+    useEffect(() => {
+        toast.success("Great success");
+        setTimeout(() => {
+            toast.error("Very bad error");
+        }, 3000);
+        setTimeout(() => {
+            toast.message("No worries");
+        }, 3000);
+    }, []);
 
-  return (
-    <ul className="versions">
-      <li className="electron-version">Electron v{versions.electron}</li>
-      <li className="chrome-version">Chromium v{versions.chrome}</li>
-      <li className="node-version">Node v{versions.node}</li>
-    </ul>
-  )
+    return (
+        <div>
+            <h1 className="text-2xl font-semibold text-emerald-600">Hello</h1>
+        </div>
+    );
 }
 
-export default Versions
+export default Versions;

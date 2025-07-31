@@ -1,10 +1,14 @@
-import Versions from './components/Versions'
-import electronLogo from './assets/electron.svg'
+import { Toaster } from "./components/ui/sonner";
+import Versions from "./components/Versions";
+import { QueryProvider } from "./providers/query.provider";
 
 function App(): React.JSX.Element {
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
-
-  return <h1 className="text-3xl text-green-400">Hello Bhai</h1>
+    return (
+        <QueryProvider>
+            <Toaster closeButton richColors />
+            <Versions />
+        </QueryProvider>
+    );
 }
 
-export default App
+export default App;
